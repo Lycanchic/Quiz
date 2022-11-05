@@ -1,44 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="script.js"></script>
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Quiz Challenge</title>
-    
-</head>
-<body>
-     <div class="container">
-      <div class="quiz-box">
-        <div id="quiz">
-           <h1>POP QUIZ TIME!</h1>
-           <div class="quiz-header">
-            <p id="progress"> Question x of y</p>
-            <p id="count-down"></p>
-        </div>
-        <p id="question"></p>
-        
-        <div class="buttons">
-        <p id="question">What's your name?></p>  
-         <button class="btn" id="btn0">
-            A. <span id="choice0"></span>
-         </button>
-         <button class="btn" id="btn1">
-            B. <span id="choice0"></span>
-         </button>
-         <button class="btn" id="btn2">
-            C. <span id="choice0"></span>
-         </button>
-         <button class="btn" id="btn3">
-            D. <span id="choice0"></span>
-         </button>
+
+    <link rel="stylesheet" href="./assets/styles.css" />
+   </head>
+ <body>
+
+   <!-- welcome page-->
+   <header>
+      <h1>Pop Quiz Time!
+         <div>
+            <p>Time: <span id="time-left">2:00</span></p>
+         <button class="btnHeader" id="view-high-scores">View High Scores</button>
+       
+      </h1>
      </div>
+      <p>Answer as many questions as you can in the alloted time. Remember you lose 5 points for each wrong answer.
+         <p>Good Luck
+    </p>
+   </p>
+   <header>
+  <div class="container">
+     <div class="wrapper">
+       <p id="questionDisplay">Click "Start Quiz" when ready.</p>
        
-       
-       
-       
-       
-</body>
+        <div id="start-screen" class="start">
+           <button id="start">Start Quiz</button>
+       </div> 
+      </div>
+     
+   </header>
+      <!--quiz page-->
+      
+      <div id="questions" class="hide">
+        <h2 id="question-title"></h2>
+        <div id="options" class="options">
+              
+             <button class="btn">option1</button>
+             <button class="btn">option2</button>
+             <button class="btn">option3</button>
+             <button class="btn">option4</button>
+            <button class="btn" id="submitScore">Submit</button>  
+      </div>
+        <div id="answerCorrectWrongGrid"></div>
+        <p id=answerCorrectWrong></p>
+   <!--quiz end page/enter initials/ score-->
+   <div id="end-screen" class="hide">
+     <div class="wrapper">
+        <h2>All done!</h2>
+        <p>Your final score is <span id="final-score"></span>.</p>
+        <p>
+          Enter initials: <input type="text" id="initials" max="4" />
+          <button id="submit">Submit</button>
+        </p>
+        <p id="finalScoreDisplay"></p>
+        <p id="enterInitials"></p>
+          <textarea id=enterInitialsTextArea></textarea>
+      </div>
+   </div> 
+    <script src="./assets/script.js"></script>
+  </body>
 </html>
