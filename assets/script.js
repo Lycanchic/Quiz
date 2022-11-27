@@ -6,12 +6,13 @@ var timer = document.getElementById ('timer')
 var nextEl = document.getElementById ('next') 
 let shuffledQuestion, currentQuestionIndex
 var countDownDate = new Date("1:00").getTime();
+var score = 0;
 let timeLeft = 100;
 let currentIndex = 0;
-/* start quiz*/
 
- 
-  console.log('started')
+
+/* start quiz*/
+ console.log('started')
 
 function startTime() {
   console.log("timer-function")
@@ -40,11 +41,12 @@ function selectChoice(e) {
   var correct = selectedButton.dataset.correct
 console.log(selectedButton.dataset)
  if((questions[currentIndex].answer === selectedButton.innerHTML)) {
-  alert("correct-answer");
+  score++;
+  alert("Correct!");
  } else {
-  alert("incorect-answer")
-
+  alert("Wrong! Try again")
  }
+ alert("You got " + score +"/" + questions.length);
  }
 
 
@@ -98,103 +100,103 @@ var questions = [
     {
     question: 'Javascript is an _______ language?',
     choices: [
-        { text: 'Object-Orientated', correct: true },
-        { text: 'Object-Based', correct: false },
-        { text: 'Procedural', correct: false },
-        { text: 'None of the above', correct: false }
+        { text: 'Object-Orientated'},
+        { text: 'Object-Based'},
+        { text: 'Procedural'},
+        { text: 'None of the above'}
 
     ],
     answer: 'Object-Orientated' },
     {
     question: 'Which of the following keywords is used to define a variable in Javascript?',
     choices: [
-        { text: 'var', correct: false },
-        { text: 'let', correct: false },
-        { text: 'Both A and B', correct: true },
-        { text: 'None of the Above', correct: false }
+        { text: 'var' },
+        { text: 'let'},
+        { text: 'Both A and B'},
+        { text: 'None of the Above'}
 
       ],
       answer: 'Both A and B' },
       {
     question: 'Which of the following methods is used to access HTML elements using Javascript?',
     choices: [
-      { text: 'getElementById', correct: false },
-      { text: 'getElementByClassName', correct: false },
-      { text: 'Both A and B', correct: true },
-      { text: 'None of the above', correct: false }
+      { text: 'getElementById'},
+      { text: 'getElementByClassName'},
+      { text: 'Both A and B' },
+      { text: 'None of the above'}
 
     ],
     answer: 'Both A and B' },
     {
     question: 'Upon encountering empty statements, what does the Javascript Interpreter do?',
     choices: [
-      { text: 'Throws an error', correct: false },
-      { text: 'ignores the statements', correct: true },
-      { text: 'Gives a warning', correct: false },
-      { text: 'None of the above', correct: false }
+      { text: 'Throws an error'},
+      { text: 'ignores the statements'},
+      { text: 'Gives a warning'},
+      { text: 'None of the above'}
 
     ],
     answer: 'ignores the statements' },
     {
-    question: 'Which of the following methods can be used to display data in some form using Javascript?',
+    question: 'Arrays in JavaScript are defined by which of the following statements?',
     choices: [
-      { text: 'document.write()', correct: false },
-      { text: 'console.log()', correct: false },
-      { text: 'window.alert()', correct: true },
-      { text: 'All of the above', correct: true }
+      { text: 'It is an ordered list of values'},
+      { text: 'It is an ordered list of objects'},
+      { text: 'It is an ordered list of string'},
+      { text: 'It is an ordered list of functions'}
 
     ],
-    answer: 'ignores the statements' },
+    answer: 'It is an ordered list of values' },
     {
     question: 'How can a datatype be declared to be a constant type?',
     choices: [
-      { text: 'const', correct: true },
-      { text: 'var', correct: false },
-      { text: 'let', correct: false },
-      { text: 'constant', correct: false }
+      { text: 'const'},
+      { text: 'var'},
+      { text: 'let'},
+      { text: 'constant'}
 
     ],
-    answer: 'ignores the statements' },
+    answer: 'const' },
     {
-    question: 'What keyword is used to check whether a given property is valid or not?',
+    question: ' Which of the following is not javascript data types?',
     choices: [
-      { text: 'in', correct: true },
-      { text: 'is in', correct: false },
-      { text: 'exists', correct: true },
-      { text: 'lies', correct: false }
+      { text: 'Null type'},
+      { text: 'Undefined type'},
+      { text: 'Number type'},
+      { text: 'All of the above'}
 
     ],
-    answer: 'ignores the statements' },
+    answer: 'All of the above' },
     {
-    question: 'What is 2 + 2',
+    question: ' Which of the following object is the main entry point to all client-side JavaScript features and APIs?',
     choices: [
-      { text: '4', correct: true },
-      { text: '22', correct: false },
-      { text: '4', correct: true },
-      { text: '22', correct: false }
+      { text: 'Position'},
+      { text: 'Window'},
+      { text: 'Standard'},
+      { text: 'Location'}
 
     ],
-    answer: 'ignores the statements' },
+    answer: 'Window' },
     {
     question: 'When the switch statement matches the expression with the given labels, how is the comparison done?',
     choices: [
-      { text: 'Both the datatype and the result of the expression are compatred', correct: true },
-      { text: 'Only the datatyped of the expression is compared', correct: false },
-      { text: 'Only the value of the expression is compared', correct: false },
-      { text: 'None of the above', correct: false }
+      { text: 'Both the datatype and the result of the expression are compatred'},
+      { text: 'Only the datatyped of the expression is compared'},
+      { text: 'Only the value of the expression is compared'},
+      { text: 'None of the above'}
 
     ],
-    answer: 'ignores the statements' },
+    answer: 'Both the datatype and the result of the expression are compatred' },
     {
     question: 'When an operator`s value is NULL, the typeof returned by the unary operator is:',
     choices:[
-      { text: 'Boolean', correct: false },
-      { text: 'Undefined', correct: false },
-      { text: 'Object', correct: true },
-      { text: 'Integer', correct: false }
+      { text: 'Boolean'},
+      { text: 'Undefined'},
+      { text: 'Object'},
+      { text: 'Integer'}
 
     ],
-    answer: 'ignores the statements' },
+    answer: 'Object' },
     
 
   ]
