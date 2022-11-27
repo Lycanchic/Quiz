@@ -1,67 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Quiz Challenge</title>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Quiz Challenge</title>
+  <link rel="stylesheet" href="./assets/styles.css">
+</head>
 
-    <link rel="stylesheet" href="./assets/styles.css" />
-   </head>
- <body>
-
-   <!-- welcome page-->
-   <header>
-      <h1>Pop Quiz Time!
-         <div>
-            <p>Time: <span id="time-left">2:00</span></p>
-         <button class="btnHeader" id="view-high-scores">View High Scores</button>
-       
-      </h1>
+<body>
+     <!--header of the quiz-->
+  <header> 
+    <h1>JavaScript Pop Quiz</h1>
+</header>      
+      <!--Welcome page-->
+      <div class="container-welcome"> 
+        <div class="wrapper">  
+      <p>This is a timed quiz. Try to finish the quiz before the timer runs out. Remember, you loose 15 seconds for each wrong or incomplete answer. Good Luck!</p>
+       <!-- timer and score count--> 
+   <div class="timer">
+    <div id="timer"> 
+      <p id="timer-clock">
+        <div class="timer-time-remaining">Time Remaining</div>
+       <div id="countdown-timer">1:00</div>
      </div>
-      <p>Answer as many questions as you can in the alloted time. Remember you lose 5 points for each wrong answer.
-         <p>Good Luck
-    </p>
-   </p>
-   <header>
-  <div class="container">
-     <div class="wrapper">
-       <p id="questionDisplay">Click "Start Quiz" when ready.</p>
-       
-        <div id="start-screen" class="start">
-           <button id="start">Start Quiz</button>
-       </div> 
+    </div>
+  </p>
+    <div class="wrapper">
+      <button class="btnHeader" id="save-high-scores">View High Scores</button>
+    <button id="start-btn" class="start-btn btn">Start Quiz</button>   
+  </div> 
+    </header>  
+     </h1>      
+        <!--questions part of the quiz-->
+<div class="container">
+  <div id="question-container" class="hide">
+    <div id="question">Question</div>
+    <div id="choices-button" class="btn-grid">
+         <button class="btn">choices 1</button>
+         <button class="btn">choices 2</button>
+         <button class="btn">choices 3</button>
+         <button class="btn">choices 4</button>
+     </div>    
+    </div>
+       <!--footer of the quiz box-->
+    <div id="controls" class="hide">  
+      <button id="start-btn" class="start-btn btn">Start Quiz</button>
+      <button id="next-btn" class="next">Next</button>
+      <button id="submit-btn" class="submit">Submit</button>
+       </div>
       </div>
-     
-   </header>
-      <!--quiz page-->
-      
-      <div id="questions" class="hide">
-        <h2 id="question-title"></h2>
-        <div id="options" class="options">
-              
-             <button class="btn">option1</button>
-             <button class="btn">option2</button>
-             <button class="btn">option3</button>
-             <button class="btn">option4</button>
-            <button class="btn" id="submitScore">Submit</button>  
-      </div>
-        <div id="answerCorrectWrongGrid"></div>
-        <p id=answerCorrectWrong></p>
-   <!--quiz end page/enter initials/ score-->
-   <div id="end-screen" class="hide">
-     <div class="wrapper">
-        <h2>All done!</h2>
-        <p>Your final score is <span id="final-score"></span>.</p>
-        <p>
-          Enter initials: <input type="text" id="initials" max="4" />
-          <button id="submit">Submit</button>
-        </p>
-        <p id="finalScoreDisplay"></p>
-        <p id="enterInitials"></p>
-          <textarea id=enterInitialsTextArea></textarea>
-      </div>
-   </div> 
-    <script src="./assets/script.js"></script>
-  </body>
+    <!--End page / initials-->
+    <div id="end-screen" class="hide">
+      <div class="wrapper">
+         <h2>All done!</h2>
+         <p>Your final score is <span id="final-score"></span>.</p>
+         <p>Enter initials: <input type="text" id="initials" max="4" />
+           <button class="btn" id="submitScore">Submit</button>  
+         </p>
+         <p id="finalScoreDisplay"></p>
+         <p id="enterInitials"></p>
+           <textarea id=enterInitialsTextArea></textarea>
+       </div>
+    </div> 
+ <script src="assets/script.js"></script>
+</body>
 </html>
