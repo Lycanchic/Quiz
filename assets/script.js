@@ -53,6 +53,8 @@ console.log(selectedButton.dataset)
   alert("Wrong! Try again")
  }
  alert("You got " + score +"/" + questions.length);
+ currentIndex = Math.floor(Math.random()*questions.length);
+  shuffledQuestion = questions[currentIndex]
  }
 
 
@@ -70,7 +72,7 @@ function getNextQuestion(question) {
       }
      button.addEventListener('click', selectChoice)
       choicesButtonsEl.appendChild(button)
-    //  getQuestion(shuffledQuestion[currentQuestionIndex])
+     //getQuestion(shuffledQuestion[currentQuestionIndex])
     })
   
     
@@ -210,7 +212,7 @@ var questions = [
       { text: 'None of the above'}
 
     ],
-    answer: 'Both the datatype and the result of the expression are compatred' },
+    answer: 'Both the datatype and the result of the expression are compared' },
     {
     question: 'When an operator`s value is NULL, the typeof returned by the unary operator is:',
     choices:[
