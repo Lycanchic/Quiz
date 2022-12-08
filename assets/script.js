@@ -1,17 +1,18 @@
 var startBtnEl = document.getElementById('start-btn')
+var nextBtn = document.getElementById('next-btn')
 var questionContainerEl = document.getElementById('question-container') 
 var questionEl = document.getElementById('question')
 var choicesButtonsEl = document.getElementById('choices-button')
 var timer = document.getElementById ('timer')
-var nextEl = document.getElementById ('next') 
 let shuffledQuestion, currentQuestionIndex
-var countDownDate = new Date("1:00").getTime();
+var countDownDate = new Date("2:00").getTime();
+var answerBtnEl = document.getElementById('answer-button')
 var score = 0;
-let timeLeft = 100;
+let timeLeft = 120;
 let currentIndex = 0;
 
 
-/* start quiz*/
+/* start Timer*/
  console.log('started')
 
 function startTime() {
@@ -19,13 +20,15 @@ function startTime() {
   let x = setInterval(function() {
     timeLeft--;
     document.getElementById("countdown-timer").innerHTML = timeLeft
+  
   },1000)
   
 
   }
-
+ /* Start Quiz Game */
 function startGame() {
   startTime()
+ 
   console.log('Game Started')
   startBtnEl.classList.add('hide')
   console.log(Math.floor(Math.random()*questions.length))
@@ -36,6 +39,9 @@ function startGame() {
   questionContainerEl.classList.remove('hide')
   getNextQuestion(shuffledQuestion)
 }
+
+
+/* Alert to the user whether the answer is correct or wrong */
 function selectChoice(e) {
   var selectedButton = e.target
   var correct = selectedButton.dataset.correct
@@ -54,42 +60,60 @@ console.log(selectedButton.dataset)
 
 function getNextQuestion(question) {
   choicesButtonsEl.innerHTML = ""
-    questionEl.innerText = question.question
+    questionEl.innerHTML = question.question
     question.choices.forEach(choice => {
       var button = document.createElement('button')
-      button.innerText = choice.text
+      button.innerHTML = choice.text
       button.classList.add('btn')
       if (choice.correct) {
         button.dataset.correct = choice.correct
       }
      button.addEventListener('click', selectChoice)
       choicesButtonsEl.appendChild(button)
+    //  getQuestion(shuffledQuestion[currentQuestionIndex])
     })
+  
+    
 }
 
+/* Answer Button function */
 function selectAnswer() {
   var selectedButton = e.target
   var correct = selectedButton.dataset.correct
+  setStatusClass(document.body, correct)
+  Array.from(answerButtonElement.children).forEach(button => {
+    setStatusClass(button.datasrt.correct)
+  })
 
 }
+ /* set class for correct and wrong */
+function setStatusClass(element, correct) {
+  clearStatusClass(element)
+  if (correct) {
+    element.classList.add('correct')
+  } else {
+    element.classList.add('wrong')
+   }
+ }
 
+ function clearStatusClass(element) {
+  element.classList.remove('correct')
+  element.classList.remove('wrong')
+ }
+
+/* start and Next button function */
 startBtnEl.addEventListener('click', startGame)
-
-/* timer */
-
-//Start the timer
-     
-//document.addEventListener('click', () => {
- // setInterval(timer, 1000);
-//}, { once: true })
-//console.log('timer-started')
+nextBtn.addEventListener('click', () => {
+  currentQuestionIndex++
+  getNextQuestion() 
+})
 
 
 /* Timer Stop */
  function stopTimer() {
   if (timer < 0) {
     clearInterval(x);
-    document.getElementById("timer-clock").innerHTML = "Time's UP!";
+    document.getElementById("timer").innerHTML = "Time's UP!";
   }
 } 1000;
 

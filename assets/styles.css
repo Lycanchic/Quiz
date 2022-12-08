@@ -141,12 +141,25 @@ header h1{
 }
 
 .start-btn {
+    width: 300px;
     font-size: 1.5rem;
     font-weight: bold;
     padding: 10px 20px;
     justify-content: center; 
     text-align: center;
+    align-items: center;
 }
+
+.next-btn {
+    width: 300px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    justify-content: center; 
+    text-align: center;
+    align-items: center;
+}
+
 .hide {
     display: none;
 }
