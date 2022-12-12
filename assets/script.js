@@ -4,7 +4,7 @@ var questionContainerEl = document.getElementById('question-container')
 var questionsEl = document.getElementById('question')
 var choicesButtons = document.getElementById('choices-button')
 var timer = document.getElementById ('timer')
-var timerEnd = questionsEl.length * 10;
+var timerEnd = questions.length * 10;
 var timerId;
 let shuffledQuestion; 
 var currentQuestionIndex = 0;
@@ -86,7 +86,8 @@ function startGame() {
 /* Alert to the user whether the answer is correct or wrong */
 function selectChoice(e) {
   var selectedButton = e.target
-//  var correct = selectedButton.dataset.correct
+
+  //  var correct = selectedButton.dataset.correct
 console.log(selectedButton.dataset)
 if((choicesButtons.value !== questions[currentQuestionIndex].answer)) {
   score++;
@@ -102,7 +103,8 @@ if((choicesButtons.value !== questions[currentQuestionIndex].answer)) {
  // check if user guessed wrong
 
 if (choicesButtons.value !== questions[currentQuestionIndex].answer) {
-  // penalize time
+  
+// penalize time
   timer -= 15;
 
   if (timer < 0) {
@@ -131,9 +133,9 @@ function getNextQuestion(question) {
 }
 
  // loop over choices
- for (var i = 0; i < currentQuestion.choices.length; i++) {
+ for (var i = 0; i < currentQuestionIndex.choices.length; i++) {
   // create new button for each choice
-  var choice = currentQuestion.choices[i];
+  var choice = currentQuestionIndex.choices[i];
   var choiceNode = document.createElement('button');
   choiceNode.setAttribute('class', 'choice');
   choiceNode.setAttribute('value', choice);
@@ -141,7 +143,7 @@ function getNextQuestion(question) {
   choiceNode.textContent = i + 1 + '. ' + choice;
 
   // display on the page
-  choicesEl.appendChild(choiceNode);
+  choicesButtons.appendChild(choiceNode);
 }
 
 function questionClick(event) {
