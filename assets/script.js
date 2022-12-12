@@ -1,24 +1,26 @@
 var startBtnEl = document.getElementById('start-btn')
 var nextBtn = document.getElementById('next-btn')
 var questionContainerEl = document.getElementById('question-container') 
-var question = document.getElementById('question')
-var choicesButtonsEl = document.getElementById('choices-button')
+var questionsEl = document.getElementById('question')
+var choicesButtons = document.getElementById('choices-button')
 var timer = document.getElementById ('timer')
-var timerEnd = question.length * 10;
+var timerEnd = questionsEl.length * 10;
+var timerId;
 let shuffledQuestion; 
 var currentQuestionIndex = 0;
 var countDownDate = new Date("2:00").getTime();
-var answer = document.getElementById('answer-button')
+var answer = document.getElementById('answer')
 var score = 0;
 let timeLeft = 60;
 let currentIndex = 0;
+var initialsEl = document.getElementById('initials')
 
 
 /* start Timer*/
  console.log('started')
 
 function startTime() {
-  console.log("timer-function")
+  console.log("timer")
   let x = setInterval(function() {
     timeLeft--;
     document.getElementById("timer").innerHTML = timerEnd
@@ -26,21 +28,37 @@ function startTime() {
   },1000)
   
 
-  }
+  } 
+
+  // start timer
+  timerId = setInterval(clockTick, 1000);
+
+  // show starting time
+  timer.textContent = timer;
+
+  /*getNextQuestion();
+
+
 
   /* Timer Stop */
  function timerEnd() {
-  if (timer < 0) {
+  if (timer <= 0) {
     clearInterval(x);
     document.getElementById("timer").innerHTML = "Time's UP!";
     const timeoutId = setTimeout(function(){
-  }, 2000);
+  }, 1000);
   
   clearTimeout(timeoutId);
   console.log(`Timeout ID ${timeoutId} has been cleared`);
     clearTimeout()
   }
 } 1000;
+
+if (timer <= 0 ) {
+  quizEnd();
+} else {
+  getNextQuestion();
+}
 
 
   // display new time on page
@@ -61,7 +79,7 @@ function startGame() {
   questionContainerEl.classList.remove('hide')
   getNextQuestion(shuffledQuestion)
 
-  choicesButtonsEl.innerHTML = '';
+  /*choicesButtonsEl.innerHTML = '';*/
 }
 
 
@@ -70,7 +88,7 @@ function selectChoice(e) {
   var selectedButton = e.target
 //  var correct = selectedButton.dataset.correct
 console.log(selectedButton.dataset)
-if((choicesButtonsEl.value !== questions[currentQuestionIndex].answer)) {
+if((choicesButtons.value !== questions[currentQuestionIndex].answer)) {
   score++;
   alert("Correct!");
  } else {
@@ -83,7 +101,7 @@ if((choicesButtonsEl.value !== questions[currentQuestionIndex].answer)) {
 
  // check if user guessed wrong
 
-if (choicesButtonsEl.value !== question[currentQuestionIndex].answer) {
+if (choicesButtons.value !== questions[currentQuestionIndex].answer) {
   // penalize time
   timer -= 15;
 
@@ -96,9 +114,9 @@ if (choicesButtonsEl.value !== question[currentQuestionIndex].answer) {
  /* get questions */
 
 function getNextQuestion(question) {
-  choicesButtonsEl.innerHTML = ""
-    question.innerHTML = question.question
-    question.choices.forEach(choice => {
+  choicesButtons.innerHTML = ""
+    questions.innerHTML = questions.questions
+    questions.choices.forEach(choice => {
       var button = document.createElement('button')
       button.innerHTML = choice.text
       button.classList.add('btn')
@@ -106,13 +124,34 @@ function getNextQuestion(question) {
         button.dataset.correct = choice.correct
       }
      button.addEventListener('click', selectChoice)
-      choicesButtonsEl.appendChild(button)
+      choicesButtons.appendChild(button)
      //getNextQuestion(shuffledQuestion[currentQuestionIndex])
-    })
-  
-    
+     choicesButtons.innerHTML = '';
+    }) 
 }
 
+ // loop over choices
+ for (var i = 0; i < currentQuestion.choices.length; i++) {
+  // create new button for each choice
+  var choice = currentQuestion.choices[i];
+  var choiceNode = document.createElement('button');
+  choiceNode.setAttribute('class', 'choice');
+  choiceNode.setAttribute('value', choice);
+
+  choiceNode.textContent = i + 1 + '. ' + choice;
+
+  // display on the page
+  choicesEl.appendChild(choiceNode);
+}
+
+function questionClick(event) {
+var buttonEl = event.target;
+
+// if the clicked element is not a choice button, do nothing.
+if (!buttonEl.matches('.choice')) {
+  return;
+ }
+}
 /* Answer Button function */
 function selectAnswer() {
   var selectedButton = e.target
