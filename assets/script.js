@@ -4,11 +4,12 @@ var questionContainerEl = document.getElementById('question-container')
 var questionEl = document.getElementById('question')
 var choicesButtonsEl = document.getElementById('choices-button')
 var timer = document.getElementById ('timer')
+var timerEnd = questionEl.length * 10;
 let shuffledQuestion, currentQuestionIndex
 var countDownDate = new Date("2:00").getTime();
 var answerBtnEl = document.getElementById('answer-button')
 var score = 0;
-let timeLeft = 120;
+let timeLeft = 60;
 let currentIndex = 0;
 
 
@@ -19,12 +20,32 @@ function startTime() {
   console.log("timer-function")
   let x = setInterval(function() {
     timeLeft--;
-    document.getElementById("countdown-timer").innerHTML = timeLeft
+    document.getElementById("timer").innerHTML = timerEnd
   
   },1000)
   
 
   }
+
+  /* Timer Stop */
+ function timerEnd() {
+  if (timer < 0) {
+    clearInterval(x);
+    document.getElementById("timer").innerHTML = "Time's UP!";
+    const timeoutId = setTimeout(function(){
+  }, 2000);
+  
+  clearTimeout(timeoutId);
+  console.log(`Timeout ID ${timeoutId} has been cleared`);
+    clearTimeout()
+  }
+} 1000;
+
+
+  // display new time on page
+  timer.textContent = timer;
+
+
  /* Start Quiz Game */
 function startGame() {
   startTime()
@@ -38,15 +59,17 @@ function startGame() {
   currentQuestionIndex = 0
   questionContainerEl.classList.remove('hide')
   getNextQuestion(shuffledQuestion)
+
+  choicesButtonsEl.innerHTML = '';
 }
 
 
 /* Alert to the user whether the answer is correct or wrong */
 function selectChoice(e) {
   var selectedButton = e.target
-  var correct = selectedButton.dataset.correct
+//  var correct = selectedButton.dataset.correct
 console.log(selectedButton.dataset)
- if((questions[currentIndex].answer === selectedButton.innerHTML)) {
+ if((questions[currentIndex].answerBtnEl === selectedButton.innerHTML)) {
   score++;
   alert("Correct!");
  } else {
@@ -55,9 +78,20 @@ console.log(selectedButton.dataset)
  alert("You got " + score +"/" + questions.length);
  currentIndex = Math.floor(Math.random()*questions.length);
   shuffledQuestion = questions[currentIndex]
+
+
+ // check if user guessed wrong
+
+if (choicesButtonsEl.value !== questionEl[currentQuestionIndex].answerBtnEl) {
+  // penalize time
+  timer -= 15;
+
+  if (timer < 0) {
+    timer = 0;
+  }
  }
-
-
+}
+ 
  /* get questions */
 
 function getNextQuestion(question) {
@@ -72,7 +106,7 @@ function getNextQuestion(question) {
       }
      button.addEventListener('click', selectChoice)
       choicesButtonsEl.appendChild(button)
-     //getQuestion(shuffledQuestion[currentQuestionIndex])
+     //getNextQuestion(shuffledQuestion[currentQuestionIndex])
     })
   
     
@@ -107,18 +141,8 @@ function setStatusClass(element, correct) {
 startBtnEl.addEventListener('click', startGame)
 nextBtn.addEventListener('click', () => {
   currentQuestionIndex++
-  getNextQuestion() 
+  getNextQuestion(shuffledQuestion) 
 })
-
-
-/* Timer Stop */
- function stopTimer() {
-  if (timer < 0) {
-    clearInterval(x);
-    document.getElementById("timer").innerHTML = "Time's UP!";
-  }
-} 1000;
-
 
 /* Quiz questions */
 
@@ -206,7 +230,7 @@ var questions = [
     {
     question: 'When the switch statement matches the expression with the given labels, how is the comparison done?',
     choices: [
-      { text: 'Both the datatype and the result of the expression are compatred'},
+      { text: 'Both the datatype and the result of the expression are compared'},
       { text: 'Only the datatyped of the expression is compared'},
       { text: 'Only the value of the expression is compared'},
       { text: 'None of the above'}
