@@ -1,13 +1,14 @@
 var startBtnEl = document.getElementById('start-btn')
 var nextBtn = document.getElementById('next-btn')
 var questionContainerEl = document.getElementById('question-container') 
-var questionEl = document.getElementById('question')
+var question = document.getElementById('question')
 var choicesButtonsEl = document.getElementById('choices-button')
 var timer = document.getElementById ('timer')
-var timerEnd = questionEl.length * 10;
-let shuffledQuestion, currentQuestionIndex
+var timerEnd = question.length * 10;
+let shuffledQuestion; 
+var currentQuestionIndex = 0;
 var countDownDate = new Date("2:00").getTime();
-var answerBtnEl = document.getElementById('answer-button')
+var answer = document.getElementById('answer-button')
 var score = 0;
 let timeLeft = 60;
 let currentIndex = 0;
@@ -69,7 +70,7 @@ function selectChoice(e) {
   var selectedButton = e.target
 //  var correct = selectedButton.dataset.correct
 console.log(selectedButton.dataset)
- if((questions[currentIndex].answerBtnEl === selectedButton.innerHTML)) {
+if((choicesButtonsEl.value !== questions[currentQuestionIndex].answer)) {
   score++;
   alert("Correct!");
  } else {
@@ -82,7 +83,7 @@ console.log(selectedButton.dataset)
 
  // check if user guessed wrong
 
-if (choicesButtonsEl.value !== questionEl[currentQuestionIndex].answerBtnEl) {
+if (choicesButtonsEl.value !== question[currentQuestionIndex].answer) {
   // penalize time
   timer -= 15;
 
@@ -96,7 +97,7 @@ if (choicesButtonsEl.value !== questionEl[currentQuestionIndex].answerBtnEl) {
 
 function getNextQuestion(question) {
   choicesButtonsEl.innerHTML = ""
-    questionEl.innerHTML = question.question
+    question.innerHTML = question.question
     question.choices.forEach(choice => {
       var button = document.createElement('button')
       button.innerHTML = choice.text
