@@ -40,11 +40,11 @@ A fun way to test a user's JavaScript knowledge.
 
 ## THE DEPLOYED REPO CAN BE FOUND AT THE FOLLOWING URL:
 ***
-
+https://lycanchic.github.io/Quiz/
 
   ## INSTALLATION OF THE REPO FROM GITHUB
   ***
-  A copy of the repository can be cloned at https://github.com/. Simply click on the repo and select **Clone**. From the drop down menu select the copy icon. Type (directly into your terminal):
+  A copy of the repository can be cloned at https://lycanchic.github.io/Quiz/. Simply click on the repo link and select "Clone". From the drop down menu select the copy icon. Type (directly into your terminal):
   'git clone' + 'the repo link' + enter.
 
   ## FUTURE ITERATIONS
