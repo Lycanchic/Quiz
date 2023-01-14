@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JavaScript Quiz Challenge</title>
-  <link rel="stylesheet" href="./assets/styles.css">
+  <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 
 <body>
@@ -16,7 +16,7 @@
       <!--Welcome page-->
       <div class="container-welcome"> 
         <div class="wrapper">  
-      <p>This is a timed quiz. Try to finish the quiz before the timer runs out. Remember, you loose 15 seconds for each wrong or incomplete answer. Good Luck!</p>
+      <p>This is a timed quiz. Try to finish the quiz before the timer runs out. Remember, you loose 15 seconds for each wrong or incomplete answer. Use the Next Button to proceed to the next question. Good Luck!</p>
        <!-- timer and score count--> 
    <div class="timer">
     <div id="timer"> 
@@ -34,9 +34,9 @@
     </header>  
      </h1>      
         <!--questions part of the quiz-->
-<div class="container">
+
   <div id="question-container" class="hide">
-    <div id="questions">Question</div>
+    <div id="question">Question</div>
     <div id="choices-button" class="btn-grid">
     <!--<div id="answer" class="answer-button"> --> 
          <button class="btn">choices 1</button>
@@ -45,7 +45,7 @@
          <button class="btn">choices 4</button>
       </div>    
      </div>
-  </div>
+  
        <!--footer of the quiz box-->
     <div id="controls" class="hide">  
       <button id="start-btn" class="start-btn btn">Start Quiz</button>
@@ -59,13 +59,28 @@
          <h2>All done!</h2>
          <p>Your final score is <span id="final-score"></span>.</p>
          <p>Enter initials: <input type="text" id="initials" max="4" />
-           <button class="btn" id="submitScore">Submit</button>  
+           <button class="btn" id="btnSubmitScore" <a href="highscores.html">Submit</a></button>  
          </p>
          <p id="finalScoreDisplay"></p>
          <p id="enterInitials"></p>
            <textarea id=enterInitialsTextArea></textarea>
        </div>
     </div> 
+
+    <!--highscores-->
+    <!--<div id="highScores" class="pl-5 ml-4 pt-5 justify-content-center font-weight-bold" style="display: none;">
+      <h2 class="font-weight-bold pt-2 pb-3 mb-2">High Scores</h2>                   
+      <div id="listOfHighScores" class="list-group list-group-flush pt-2 pb-3 mb-2"></div>
+      <p>
+          <button type="submit" class="btn btn-transparent mt-3 mr-3" id="goBackBtn">Go Back</button>
+          <button type="submit" class="btn btn-transparent mt-3" id="clearHighScoreBtn">Clear High Scores</button>
+      </p>
+      
+  </div>
+</main>
+<div class="col-md-2"></div>
+</div>
+</div>>-->
  <script src="assets/script.js"></script>
 </body>
 </html>
